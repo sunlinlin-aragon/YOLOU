@@ -467,3 +467,9 @@ class TracedModel(nn.Module):
         out = self.model(x)
         out = self.detect_layer(out)
         return 
+
+def time_synchronized():
+    # pytorch-accurate time
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
+    return time.time()
